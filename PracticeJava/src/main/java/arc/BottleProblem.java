@@ -19,21 +19,6 @@ public class BottleProblem {
 			int remainder = totalEmptyBottles % exchangeBase;
 			this.remainder = remainder;
 		}
-		
-		
-//		if(totalEmptyBottles)
-//		int countsCanBeChange = 0;
-//		if ((drinkCounts + this.remainder) >= exchangeBase) {
-//			countsCanBeChange = (drinkCounts + this.remainder) / exchangeBase;
-//			this.remainder = 0;
-//			int remainder = (drinkCounts + this.remainder) % exchangeBase;
-//			this.remainder = remainder;
-//		} 
-//
-//		if (countsCanBeChange >= 1) {
-//			calculateTotalBottles(countsCanBeChange, exchangeBase);
-//			return;
-//		}
 
 	}
 
@@ -58,7 +43,7 @@ public class BottleProblem {
 	 */
 	public static void main(String[] args) {
 		BottleProblem bp = new BottleProblem();
-		bp.calculateTotalBottles(1000, 3);
+		bp.calculateTotalBottles(1000, 2);
 		System.out.println(bp.getTotalBottles());
 		System.out.println(bp.getRemainder());
 	}
