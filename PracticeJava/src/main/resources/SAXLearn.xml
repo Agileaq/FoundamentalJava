@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addressbook>
+	<person>
+		<lastname>Qian</lastname>
+		<firstname>Sheng-long</firstname>
+		<company>Hewlett Packard</company>
+		<email>sheng-long.qian@hp.com</email>
+	</person>
+	<person>
+		<lastname>Gu</lastname>
+		<firstname>Tian-Ye</firstname>
+		<company>Citi Bank</company>
+		<email>piter@citi.cwf.com</email>
+	</person>
+</addressbook>
