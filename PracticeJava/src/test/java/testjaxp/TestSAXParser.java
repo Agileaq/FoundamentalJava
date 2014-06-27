@@ -1,4 +1,4 @@
-package jaxp;
+package testjaxp;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
@@ -7,6 +7,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import jaxp.AddressBook;
+import jaxp.MyContentHandler;
 
 import org.junit.Test;
 import org.xml.sax.InputSource;
