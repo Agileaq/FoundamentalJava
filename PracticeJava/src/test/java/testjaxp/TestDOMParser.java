@@ -13,7 +13,7 @@ import org.xml.sax.InputSource;
 public class TestDOMParser {
 
 	@Test
-	public void testDOMParser() throws ParserConfigurationException{
+	public void testDOMParser() throws Exception{
 		
 		InputStream is = this.getClass().getClassLoader()
 				.getResourceAsStream("SAXLearn.xml");
@@ -21,7 +21,7 @@ public class TestDOMParser {
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.newDocument();
+		Document doc = db.parse(input);
 		System.out.println(doc);
 		
 	}
