@@ -17,7 +17,7 @@ public class Client {
 	public List<String> getAllPhoneNumbers() {
 		String phoneStartNumber = "1709195";
 		List<String> list = new ArrayList<String>();
-		Integer digit = 5178;
+		Integer digit = 0;
 		while(digit < 10000) {
 			System.out.println(digit);
 			int length = digit.toString().length();
