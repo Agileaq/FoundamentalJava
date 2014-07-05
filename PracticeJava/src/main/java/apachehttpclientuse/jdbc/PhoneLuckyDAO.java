@@ -3,6 +3,10 @@ package apachehttpclientuse.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class PhoneLuckyDAO {
@@ -40,6 +44,46 @@ public class PhoneLuckyDAO {
 		return rowAffectedNumber;
 	}
 
+	public List<PhoneBean> get100ValuePhoneNumber() throws Exception {
+		List<PhoneBean> phoneBeans = new ArrayList<PhoneBean>();
+		String sql = "select phoneNumber,numberValue,lastTwoNumberValue,lastFourNumberValue from PhoneAndLucky where numberValue=100";
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		while( rs.next()) {
+			String phoneNumber = rs.getString(1);
+			int numberValue = rs.getInt(2);
+			PhoneBean pb = new PhoneBean();
+			pb.setNumberValue(numberValue);
+			pb.setPhoneNumber(phoneNumber);
+			phoneBeans.add(pb);
+		}
+		return phoneBeans;
+	}
+	
+	public List<PhoneBean> get95ValuePhoneNumber() throws Exception {
+		List<PhoneBean> phoneBeans = new ArrayList<PhoneBean>();
+		String sql = "select phoneNumber,numberValue,lastTwoNumberValue,lastFourNumberValue from PhoneAndLucky where numberValue=95";
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		while( rs.next()) {
+			String phoneNumber = rs.getString(1);
+			int numberValue = rs.getInt(2);
+			PhoneBean pb = new PhoneBean();
+			pb.setNumberValue(numberValue);
+			pb.setPhoneNumber(phoneNumber);
+			phoneBeans.add(pb);
+		}
+		return phoneBeans;
+	}
+	
+	public void update100ValuePhoneNumber(PhoneBean pb) throws Exception {
+		String sql = "update PhoneAndLucky set lastTwoNumberValue=?,lastFourNumberValue=? where phoneNumber=?";
+		PreparedStatement preparedStatement = conn.prepareStatement(sql);
+		preparedStatement.setInt(1, pb.getLastTwoNumberValue());
+		preparedStatement.setInt(2, pb.getLastFourNumberValue());
+		preparedStatement.setString(3, pb.getPhoneNumber());
+		preparedStatement.execute();
+	}
 	public static Connection getConnection() throws Exception {
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		Properties connectionProps = new Properties();

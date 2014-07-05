@@ -14,6 +14,12 @@ public class Client {
 		pd.insertPhoneAndLuckyInfo(pb);
 	}
 	
+	public void updateDataFromlifehttpcn(String phoneNumber) throws Exception {
+		// String phoneNumber = "17091950974";
+		PhoneBean pb = httpClient.readLuckyInfoByPhoneNumber(phoneNumber);
+		pd.update100ValuePhoneNumber(pb);
+	}
+	
 	public List<String> getAllPhoneNumbers() {
 		String phoneStartNumber = "1709195";
 		List<String> list = new ArrayList<String>();
@@ -38,15 +44,27 @@ public class Client {
 	}
 	
 	public static void main(String args[]) throws Exception {
-		Client client = new Client();
-		List<String> phoneNumbers = client.getAllPhoneNumbers();
-		for(String phoneNumber : phoneNumbers) {
-			client.extractDataFromlifehttpcn(phoneNumber);
-		}
-		
 //		Client client = new Client();
+//		List<String> phoneNumbers = client.getAllPhoneNumbers();
+//		for(String phoneNumber : phoneNumbers) {
+//			client.extractDataFromlifehttpcn(phoneNumber);
+//		}
+		
+		Client client = new Client();
 //		client.extractDataFromlifehttpcn("17091950020");
 		
+		PhoneLuckyDAO pld = new PhoneLuckyDAO();
+		List<PhoneBean> pbs = pld.get95ValuePhoneNumber();
+		for(PhoneBean pb : pbs) {
+			Thread.sleep(5000);
+			client.updateDataFromlifehttpcn(pb.getPhoneNumber());
+		}
 		
+//		PhoneBean pb= new PhoneBean();
+//		pb.setPhoneNumber("17091950016");
+//		pb.setNumberValue(99);
+//		pb.setLastFourNumberValue(11);
+//		pb.setLastTwoNumberValue(22);
+//		pld.update100ValuePhoneNumber(pb);
 	}
 }
