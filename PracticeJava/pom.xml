@@ -21,7 +21,7 @@
 			<artifactId>sqljdbc4</artifactId>
 			<version>3.0</version>
 			<scope>system</scope>
-			<systemPath>${user.home}/.m2/sqljdbc-1.2-fixed.jar</systemPath>
+			<systemPath>${basedir}/src/main/resources/sqljdbc.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
