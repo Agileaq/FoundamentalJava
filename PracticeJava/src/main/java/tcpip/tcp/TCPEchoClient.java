@@ -1,12 +1,8 @@
 package tcpip.tcp;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -21,15 +17,18 @@ public class TCPEchoClient {
 		os.write(dataOut.getBytes());
 		os.flush();
 		System.out.println("client data send out");
-		byte[] dataIn = new byte[2];
+		byte[] dataIn = new byte[50];
 		String result = "";
-		while(is.read(dataIn) != -1) {
-			result += new String(dataIn);
+		int len = 0;
+		while((len = is.read(dataIn)) != -1) {
+			result += new String(dataIn, 0 , len);
 			if(result.endsWith("end")) {
 				break;
 			}
 		}
 		System.out.println("Client received the server returned data £º " + result);
+		is.close();
+		os.close();
 		socket.close();
 	}
 }

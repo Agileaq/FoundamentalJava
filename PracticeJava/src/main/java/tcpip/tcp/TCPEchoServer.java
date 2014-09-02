@@ -17,9 +17,8 @@ public class TCPEchoServer {
 			InputStream is = socket.getInputStream();
 			OutputStream os = socket.getOutputStream();
 			byte[] data = new byte[2];
-			int len = 0;
 			String result = "";
-			while((len = is.read(data)) != -1) {
+			while(is.read(data) != -1) {
 				result += new String(data);
 				if(result.endsWith("end")){
 					break;
