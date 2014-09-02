@@ -17,14 +17,19 @@ public class TCPEchoClient {
 		//BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		OutputStream os = socket.getOutputStream();
 		//BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
-		String dataOut = "test socket client aaa";
+		String dataOut = "test socket client aaabbbccc end";
 		os.write(dataOut.getBytes());
 		os.flush();
-		os.close();
-		byte[] dataIn = new byte[255];
+		System.out.println("client data send out");
+		byte[] dataIn = new byte[2];
+		String result = "";
 		while(is.read(dataIn) != -1) {
-			System.out.println(new String(dataIn));
+			result += new String(dataIn);
+			if(result.endsWith("end")) {
+				break;
+			}
 		}
+		System.out.println("Client received the server returned data £º " + result);
 		socket.close();
 	}
 }
