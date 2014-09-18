@@ -15,7 +15,7 @@ import org.apache.http.util.EntityUtils;
 
 public class HttpLoadTest {
 	
-	public static int threadCounts = 10000;
+	public static int threadCounts = 1000;
 	public static int initialThreadCounts = threadCounts;
 	
 	public synchronized static void  minusCounts() {
@@ -32,7 +32,7 @@ public class HttpLoadTest {
 			Thread t = new Thread(new LoadRunner());
 			t.start();
 		}
-		while(threadCounts > 100) {
+		while(threadCounts != 0) {
 			Thread.sleep(100);
 			//System.out.println(threadCounts);
 		}
@@ -46,7 +46,7 @@ class LoadRunner implements Runnable {
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 
 	public void run() {
-		//System.out.println(Thread.currentThread().getName() + "start");
+		System.out.println(Thread.currentThread().getName() + "start");
 		try {
 			HttpGet httpget = new HttpGet(url);
 			HttpHost proxy = new HttpHost("proxy.houston.hp.com", 8080, "http");
@@ -70,7 +70,7 @@ class LoadRunner implements Runnable {
 			};
 			String responseBody = httpclient.execute(httpget, responseHandler);
 			//System.out.println("---------------------------");
-			//System.out.println(responseBody);
+			System.out.println(responseBody);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -81,7 +81,7 @@ class LoadRunner implements Runnable {
 			}
 		}
 		HttpLoadTest.minusCounts();
-		//System.out.println(Thread.currentThread().getName() + "end");
+		System.out.println(Thread.currentThread().getName() + "end");
 	}
 
 }
