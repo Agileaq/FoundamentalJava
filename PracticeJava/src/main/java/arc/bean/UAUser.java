@@ -1,13 +1,11 @@
 package arc.bean;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Guoying on 2015/9/6.
  */
-@XmlRootElement
 public class UAUser implements Serializable {
 
     private static final long serialVersionUID = 9183261192899815426L;
